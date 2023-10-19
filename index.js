@@ -1,9 +1,12 @@
 // ==UserScript==
 // @name         Disney plus plus plus
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/schelmo
 // @version      0.1
 // @description  Real Links for Movies and Series (allows to open in new Tab) + Overlay with some Informations (title, year, brief description, type and genres)
-// @author       You
+// @author       schelmo
+// @license      MIT
+// @homepageURL  https://github.com/schelmo/disney-plus-plus-plus
+// @supportURL   https://github.com/schelmo/disney-plus-plus-plus
 // @match        https://www.disneyplus.com/*
 // @grant        unsafeWindow
 // ==/UserScript==
