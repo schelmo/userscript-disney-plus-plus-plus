@@ -5,8 +5,8 @@
 // @description  Real Links for Movies and Series (allows to open in new Tab) + Overlay with some Informations (title, year, brief description, type and genres)
 // @author       schelmo
 // @license      MIT
-// @homepageURL  https://github.com/schelmo/disney-plus-plus-plus
-// @supportURL   https://github.com/schelmo/disney-plus-plus-plus
+// @homepageURL  https://github.com/schelmo/userscript-disney-plus-plus-plus
+// @supportURL   https://github.com/schelmo/userscript-disney-plus-plus-plus
 // @match        https://www.disneyplus.com/*
 // @grant        unsafeWindow
 // ==/UserScript==
