@@ -1,7 +1,6 @@
 # Disney Plus Plus Plus Userscript
 
-Real Links for Movies and Series (allows to open in new Tab)  
-Overlay on Tiles with some Informations (title, year, brief description, type and genres)
+Overlay for movie/series tiles with some information (title, year, brief description and genres)
 
 [Install on Greasyfork](https://greasyfork.org/en/scripts/477777-disney-plus-plus-plus)
 
