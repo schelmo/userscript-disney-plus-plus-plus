@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Disney plus plus plus
 // @namespace    https://github.com/schelmo
-// @version      0.2
+// @version      0.3
 // @description  Overlay for movie/series tiles with some information (title, year, brief description and genres)
 // @author       schelmo
 // @license      MIT
@@ -108,6 +108,7 @@ const collect = (data, url, byFetch) => {
 const urlMatchers = [
   "/svc/search/disney/",
   "/explore/v1.3/set/",
+  "/explore/v1.4/set/",
   "/search?query=",
 ];
 
