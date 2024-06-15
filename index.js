@@ -141,17 +141,6 @@ unsafeWindow.XMLHttpRequest.prototype.open = function (...args) {
       { once: true },
     );
   }
-  this.addEventListener(
-    "load",
-    function () {
-      const responseText = this.responseText;
-      requestIdleCallback(() => {
-        const json = JSON.parse(responseText);
-        console.log(json, url);
-      });
-    },
-    { once: true },
-  );
   origOpen.apply(this, args);
 };
 
