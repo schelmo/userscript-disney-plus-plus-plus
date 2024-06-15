@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Disney plus plus plus
 // @namespace    https://github.com/schelmo
-// @version      0.3
+// @version      0.4
 // @description  Overlay for movie/series tiles with some information (title, year, brief description and genres)
 // @author       schelmo
 // @license      MIT
@@ -51,7 +51,8 @@ document.addEventListener(
   async (evt) => {
     if (evt.target?.nodeName !== "A") return;
     const data = evt.target.dataset;
-    const id = data.itemId;
+    let id = data.itemId;
+    if (!items.has(id)) id = evt.target.href?.replace(/.*\/browse\//, "");
     if (!items.has(id)) return;
     const item = items.get(id);
     let hovered = true;
@@ -100,8 +101,14 @@ const collect = (data, url, byFetch) => {
 
   setItems?.forEach((item) => {
     if (!item.visuals?.description)
-      return console.log("Add no collection to items", item);
+      return console.log(
+        "Add no collection to items",
+        item.visuals?.title,
+        item,
+      );
     items.set(item.id, item);
+    if (item.actions?.[0]?.deeplinkId)
+      items.set(item.actions?.[0]?.deeplinkId, item);
   });
 };
 
@@ -115,7 +122,7 @@ const urlMatchers = [
 unsafeWindow.fetch = async (url, ...args) => {
   const response = await fetch(url, ...args);
   const r = response.clone();
-  r.json().then((d) => console.log(url, d));
+  // r.json().then((d) => console.log(url, d));
   if (urlMatchers.some((matcher) => url.includes(matcher))) {
     const res = response.clone();
     requestIdleCallback(() => {
