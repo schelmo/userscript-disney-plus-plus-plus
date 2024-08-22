@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Disney plus plus plus
 // @namespace    https://github.com/schelmo
-// @version      0.4
+// @version      0.5
 // @description  Overlay for movie/series tiles with some information (title, year, brief description and genres)
 // @author       schelmo
 // @license      MIT
@@ -114,8 +114,7 @@ const collect = (data, url, byFetch) => {
 
 const urlMatchers = [
   "/svc/search/disney/",
-  "/explore/v1.3/set/",
-  "/explore/v1.4/set/",
+  /\/explore\/v1.\d+\/set\//,
   "/search?query=",
 ];
 
@@ -123,7 +122,7 @@ unsafeWindow.fetch = async (url, ...args) => {
   const response = await fetch(url, ...args);
   const r = response.clone();
   // r.json().then((d) => console.log(url, d));
-  if (urlMatchers.some((matcher) => url.includes(matcher))) {
+  if (urlMatchers.some((matcher) => url.match(matcher))) {
     const res = response.clone();
     requestIdleCallback(() => {
       res.json().then((json) => json.data && collect(json.data, url, true));
@@ -135,7 +134,7 @@ unsafeWindow.fetch = async (url, ...args) => {
 var origOpen = unsafeWindow.XMLHttpRequest.prototype.open;
 unsafeWindow.XMLHttpRequest.prototype.open = function (...args) {
   const url = args[1];
-  if (urlMatchers?.some((matcher) => url.includes(matcher))) {
+  if (urlMatchers?.some((matcher) => url.match(matcher))) {
     this.addEventListener(
       "load",
       function () {
